@@ -4283,14 +4283,14 @@
             document.getElementById('current-loc').innerText = cityData[state.idx].name;
             updateStatusPanel();
             
-            // Update the center image to match the current region tile while keeping the initial board image as fallback.
+            // Update the center image to match the current board tile while keeping the initial board image as fallback.
             const centerImageEl = document.querySelector('.center-image');
             if (centerImageEl) {
                 if (!centerImageEl.dataset.defaultSrc) {
                     centerImageEl.dataset.defaultSrc = centerImageEl.getAttribute('src') || '';
                 }
                 const currentCity = cityData[state.idx];
-                const nextImage = currentCity?.image || centerImageEl.dataset.defaultSrc || DEFAULT_PREVIEW_IMAGE;
+                const nextImage = currentCity?.boardImage || currentCity?.image || centerImageEl.dataset.defaultSrc || DEFAULT_PREVIEW_IMAGE;
                 if (centerImageEl.getAttribute('src') !== nextImage) {
                     centerImageEl.src = nextImage;
                 }
