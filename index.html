@@ -3583,8 +3583,9 @@
 
     <!-- SCREEN 3: Pilih Karakter -->
     <div id="screen-char" class="screen-overlay hidden">
-        <div style="display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; width: 100%; max-width: 1500px; margin: 0 auto; padding: 0 clamp(14px, 2vw, 28px);">
+        <div style="display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; width: 100%; max-width: 1500px; margin: 0 auto; padding: 0 clamp(14px, 2vw, 28px); gap: 18px;">
             <h1 class="screen-char-title">PILIH AVATARMU</h1>
+            <button class="btn-gold" onclick="backToMainMenuFromCharSelect()" style="background: rgba(33, 37, 41, 0.08); color: var(--dark-outline); width: auto; padding: clamp(10px, 1.5vw, 14px) clamp(18px, 2.5vw, 22px);">KEMBALI KE MENU</button>
             <div class="char-grid" id="selection-grid"></div>
         </div>
     </div>
@@ -4061,6 +4062,14 @@
             document.getElementById('screen-rules').classList.add('hidden');
             document.getElementById('screen-char').classList.remove('hidden');
             initCharList();
+        }
+
+        function backToMainMenuFromCharSelect() {
+            document.getElementById('screen-char').classList.add('hidden');
+            document.getElementById('screen-name').classList.remove('hidden');
+            document.querySelectorAll('.char-card.selected').forEach(selectedCard => {
+                selectedCard.classList.remove('selected');
+            });
         }
 
         function selectAvatarCard(card) {
